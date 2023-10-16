@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #animatedTextContainer {
+            white-space: nowrap;
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        #background {
+            background-color: red;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1; 
+        }
+
+        #animatedText {
+           
+            color: white; 
+            position: relative;
+        }
+
+        @keyframes scrollText {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="animatedTextContainer">
+        <div id="background"></div>
+        <div id="animatedText">Hello, World! This is a scrolling text.</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
