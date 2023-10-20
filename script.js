@@ -4,7 +4,8 @@ const imageElement = document.getElementById('animatedImage');
 const imageCounter = document.getElementById('imageCounter');
 const imageCaption = document.getElementById('imageCaption');
 const toggleImageButton = document.getElementById('toggleImage');
-
+const changeSpeedButton = document.getElementById('changeSpeed');
+const changeTextColorButton = document.getElementById('changeTextColor');
 
 const texts = [
     'Hello, World! This is a scrolling text.',
@@ -18,6 +19,7 @@ let isZoomedIn = true;
 let isCaptionVisible = true;
 let isImageVisible = true;
 let clickCount = 0;
+let animationSpeed = 50;
 
 imageElement.addEventListener('click', () => {
     clickCount++;
@@ -30,6 +32,24 @@ toggleImageButton.addEventListener('click', () => {
     imageCaption.style.display = isImageVisible ? 'block' : 'none';
 });
 
+changeSpeedButton.addEventListener('click', () => {
+    animationSpeed = animationSpeed === 50 ? 100 : 50;
+});
+
+changeTextColorButton.addEventListener('click', () => {
+    const randomColor = getRandomColor();
+    textElement.style.color = randomColor;
+});
+
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
 async function animateTextAndImage() {
     while (true) {
         for (let i = 100; i; i--) {
@@ -37,7 +57,7 @@ async function animateTextAndImage() {
             backgroundElement.style.backgroundColor = `rgb(${255 - i * 2}, 0, 0)`;
             textElement.style.fontSize = `${24 + i / 4}px`;
             imageElement.style.transform = isZoomedIn ? `scale(${i / 100})` : `scale(${1 - i / 100})`;
-            await sleep(50);
+            await sleep(animationSpeed);
         }
 
         currentTextIndex = (currentTextIndex + 1) % texts.length;
