@@ -42,6 +42,19 @@
             text-align: center;
         }
 
+        #listContainer {
+            margin-top: 20px;
+        }
+
+        #itemList {
+            list-style-type: none;
+        }
+
+        #addItemButton, #removeItemButton {
+            margin: 5px;
+            padding: 5px;
+        }
+
         @keyframes scrollText {
             0% {
                 transform: translateX(100%);
@@ -69,6 +82,12 @@
     <button id="toggleImage">Toggle Image</button>
     <button id="changeSpeed">Change Speed</button>
     <button id="changeTextColor">Change Text Color</button>
+    <div id="listContainer">
+        <ul id="itemList">
+        </ul>
+        <button id="addItemButton">Add Item</button>
+        <button id="removeItemButton">Remove Item</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

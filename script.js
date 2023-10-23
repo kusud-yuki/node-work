@@ -6,6 +6,9 @@ const imageCaption = document.getElementById('imageCaption');
 const toggleImageButton = document.getElementById('toggleImage');
 const changeSpeedButton = document.getElementById('changeSpeed');
 const changeTextColorButton = document.getElementById('changeTextColor');
+const itemList = document.getElementById('itemList');
+const addItemButton = document.getElementById('addItemButton');
+const removeItemButton = document.getElementById('removeItemButton');
 
 const texts = [
     'Hello, World! This is a scrolling text.',
@@ -39,6 +42,18 @@ changeSpeedButton.addEventListener('click', () => {
 changeTextColorButton.addEventListener('click', () => {
     const randomColor = getRandomColor();
     textElement.style.color = randomColor;
+});
+addItemButton.addEventListener('click', () => {
+    const newItem = document.createElement('li');
+    newItem.textContent = `New Item ${itemList.childElementCount + 1}`;
+    itemList.appendChild(newItem);
+});
+
+removeItemButton.addEventListener('click', () => {
+    const lastItem = itemList.lastElementChild;
+    if (lastItem) {
+        itemList.removeChild(lastItem);
+    }
 });
 
 function getRandomColor() {
