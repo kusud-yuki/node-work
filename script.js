@@ -9,6 +9,8 @@ const changeTextColorButton = document.getElementById('changeTextColor');
 const itemList = document.getElementById('itemList');
 const addItemButton = document.getElementById('addItemButton');
 const removeItemButton = document.getElementById('removeItemButton');
+const clearTextButton = document.getElementById('clearTextButton');
+const changeBackgroundButton = document.getElementById('changeBackgroundButton');
 
 const texts = [
     'Hello, World! This is a scrolling text.',
@@ -54,6 +56,16 @@ removeItemButton.addEventListener('click', () => {
     if (lastItem) {
         itemList.removeChild(lastItem);
     }
+});
+
+clearTextButton.addEventListener('click', () => {
+    textElement.textContent = '';
+});
+
+
+changeBackgroundButton.addEventListener('click', () => {
+    const randomColor = getRandomColor();
+    backgroundElement.style.backgroundColor = randomColor;
 });
 
 function getRandomColor() {
