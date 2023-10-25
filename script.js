@@ -11,6 +11,8 @@ const addItemButton = document.getElementById('addItemButton');
 const removeItemButton = document.getElementById('removeItemButton');
 const clearTextButton = document.getElementById('clearTextButton');
 const changeBackgroundButton = document.getElementById('changeBackgroundButton');
+const textInput = document.getElementById('textInput');
+const linkElement = document.getElementById('link');
 
 const texts = [
     'Hello, World! This is a scrolling text.',
@@ -26,6 +28,20 @@ let isImageVisible = true;
 let clickCount = 0;
 let animationSpeed = 50;
 
+textInput.addEventListener('input', () => {
+    const inputText = textInput.value.toLowerCase();
+    textElement.textContent = textInput.value;
+
+    linkElement.innerHTML = `<a href="${inputText}" target="_blank">${inputText}</a>`;
+
+    if (inputText.includes('red')) {
+        textElement.style.color = 'red';
+        backgroundElement.style.backgroundColor = 'white';
+    } else {
+        textElement.style.color = 'white';
+        backgroundElement.style.backgroundColor = 'red';
+    }
+});
 imageElement.addEventListener('click', () => {
     clickCount++;
     imageCounter.textContent = `Image Clicks: ${clickCount}`;
